@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h2>クローゼットの作成</h2>
-        <transition-group name="list">
+        <transition-group name="list" tag="div">
             <div class="card" v-for="(item, index) in cloth" :key="item.id">
                 <!-- item.idとstatusが一致すれば表示する -->
                 <div v-if="item.id === status">
@@ -23,7 +23,9 @@
         data(){
             return {
                 cloth: [],
+                // 持っている服を入れるbox
                 yBox: [],
+                // 持っていない服を入れるbox
                 nBox: [],
                 status: 1
             }
@@ -37,8 +39,10 @@
         methods: {
             // ユーザーが持っているアイテムを入れる
             yes(item, index){
+                // 表示するリストから削除
                 this.cloth.splice(index, 1)
                 this.yBox.push(item)
+                // 表示切り替えの為の処理
                 this.status = this.status + 1
                 console.log(this.yBox)
             },
@@ -65,12 +69,15 @@
     .imgs {
         width: 300px;
         height: 300px;
+        padding: 5%;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px #ccc;
     }
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-    .fade-enter, .fade-leave-active {
-        opacity: 0
+    .imgs:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 7px 34px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+        transition: all .5s;
+        cursor: pointer;
     }
     .yesbtn {
         background-color: #ADD8E6;
@@ -79,6 +86,7 @@
         padding: 50px;
         width: 10%;
         height: 60%;
+        box-shadow: 0 2px 5px #ccc;
     }
     .yesbtn:hover{
         background-color: rgb(121, 196, 220);
@@ -89,8 +97,10 @@
         color: white;
         border-radius: 30px;
         padding: 50px;
+        margin-left: 10%;
         width: 10%;
         height: 60%;
+        box-shadow: 0 2px 5px #ccc;
     }
     .nobtn:hover{
         background-color: rgb(145, 145, 145);
@@ -98,5 +108,8 @@
     }
     .card {
         text-align: center;
+    }
+    .v-move {
+        transition: transform 1s;
     }
 </style>
