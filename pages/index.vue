@@ -22,6 +22,26 @@ export default {
 
 <style  lang="scss" scoped>
  $color-bg: rgb(100, 209, 230);
+ @mixin btnStyle{
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 1rem 4rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    border-radius: 0.5rem;
+ }
  .home{
    font-family: "Hiragino Maru Gothic Pro";
    text-align: center;
@@ -37,57 +57,25 @@ export default {
   margin: 100px 0 50px 0;
 }
  .button{
-    background-color: $color-bg;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    display: inline-block;
-    padding: 1rem 4rem;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 0.1em;
+  background-color: $color-bg;
+  color: #fff;
+  @include btnStyle();
+
+  &:hover{
+    color: $color-bg;
+    background-color:#fff;
+  }
+ }
+.button2{
+  background-color: #fff;
+  color: $color-bg;
+  @include btnStyle();
+    
+  &:hover{
     color: #fff;
-    border-radius: 0.5rem;
- }
- .button:hover{
-   color: $color-bg;
-   background-color:#fff;
- }
- .button2{
-    background-color: #fff;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    display: inline-block;
-    padding: 1rem 4rem;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    color:$color-bg;
-    border-radius: 0.5rem;
- }
-  .button2:hover{
-   color: #fff;
-   background-color:$color-bg;
- }
+    background-color:$color-bg;
+  }
+}
  .button3{
   background: none;
 	border: none;

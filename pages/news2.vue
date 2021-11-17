@@ -48,5 +48,4 @@
   color: $color-bg;
   background-color:#fff;
 }
-
 </style>

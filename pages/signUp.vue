@@ -1,10 +1,10 @@
 <template>
     <div class="signUp">
-        <h1>会員登録</h1>
-        <div>メールアドレス</div>
-        <div><input type="text" v-model="email" class="text"></div>
-        <div>パスワード</div>
-        <div><input type="text" v-model="password" class="text"></div>
+        <h1 class="word1">会員登録</h1>
+        <div class="word2">メールアドレス</div>
+        <div><input type="text" v-model="email" class="text" placeholder="sample@email.com"></div>
+        <div class="word2">パスワード</div>
+        <div><input type="text" v-model="password" class="text" placeholder="✳︎✳︎✳︎✳︎"></div>
         <div><button class="button" @click="signUp" >会員登録</button></div>
     </div>
 </template>
@@ -21,11 +21,6 @@ export default {
             password:''
         }
     },
-    // computed:{
-    //     user(){
-    //         return this.$store.getters.uid
-    //     }
-    // },
     methods:{
         signUp(){
             console.log(firebase);
@@ -41,51 +36,69 @@ export default {
     }
 }
 </script>
-<style lang="scss" >
+<style lang="scss" scoped>
 $color-bg: rgb(100, 209, 230);
-.signUp{
-    display: grid;
-    place-items: center;
-}
-h1 {
-    font-size: 1.75rem;
-}
-// .text{
-//     position: relative;
-//   display: block;
-//   width: 500px;
-//   margin-top: 50px;
-//   padding: 15px;
-//   border: none;
-//   border-radius: 5px;
-//   font-size: 16px;
-//   color: #a0a0a0;
-//   outline: none;
-// }
-.button{
-    background-color: $color-bg;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    display: inline-block;
-    padding: 1rem 4rem;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+
+.word1{
     text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 0.1em;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 30px 0 15px 0;
+}
+.word2{
+    padding-left: 58px;
+}
+.signUp{
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    font-family:  "Hiragino Maru Gothic Pro";
+}
+.text{
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+
+    &:focus{
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    }
+}
+.button{
+    cursor: pointer;
+    border-radius: 5em;
     color: #fff;
-    border-radius: 0.5rem;
+    background: $color-bg;
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-left: 35%;
+    font-size: 13px;
+    box-shadow: 0;
+    border: solid;
+
+    &:hover{
+        background-color: #fff;
+        color: $color-bg;
+        
+    }
 }
-.button:hover{
-    color: $color-bg;
-    background-color:#fff;
-}
+
 </style>

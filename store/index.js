@@ -55,14 +55,17 @@ const createStore = () => {
                 commit("deleteLoginUser");
             },
             // 登録後のログイン
-            login(context, payload) {
-                firebase.auth().signInWithEmailAndPassword(payload.email, payload.pass)
-                    .then(user => {
-                        console.log('成功！')
-                    }).catch((error) => {
-                        alert(error)
-                    })
+            login(){
+                firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                .then(
+                    console.log('成功！'),
+                    this.$router.push('/news1')
+                ).catch((error) => {
+                    alert(error)
+                });
             },
+    
+
             // firebaseの洋服を取得する
             // ユーザーが新規登録した時点で呼び出す
             fetchItems({ commit }) {
