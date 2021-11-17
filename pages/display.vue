@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <h2>コーディネート一覧</h2>
+        <nuxt-link to="/choise">Choise</nuxt-link>
         <div class="container2">
             <span class="string">今日</span>
             <!-- <span class="location">@東京</span> -->
@@ -10,7 +11,7 @@
                     <span class="red">{{Math.floor(weatherInfo[0].temp.max)}}&deg;C</span>&nbsp;&nbsp;
                     <span class="string">最低</span>
                     <span class="blue">{{Math.floor(weatherInfo[0].temp.min)}}&deg;C</span>
-                    <span>{{ weatherInfo[0].weather[0].description }}<img :src="icons"/></span>
+                    <span><img :src="require(`~/assets/${icons}`)" width="3%" height="3%"/>{{ weatherInfo[0].weather[0].description }}</span>
                 </div>
             <!-- apiでのデータ取得に時間がかかる為、反映されるまでの表示 -->
                 <div v-if="!this.weatherInfo[0]">
@@ -30,14 +31,13 @@
 </template>
 
 <script>
-    // import axios from '@nuxtjs/axios'
+    import { mapActions} from 'vuex'
 export default {
     data: () => {
         return {
             latitude: 0,
             longitude: 0,
             weatherInfo: [],
-            // advice: ''
         }
     },
     computed: {
@@ -71,7 +71,7 @@ export default {
             if(this.weatherInfo[0]){
                 if(this.weatherInfo[0].weather[0].description.includes("雨")){
                     icon = "rain.png" 
-                } else if(this.weatherInfo[0].weather[0].description.includes("雲") || this.weatherInfo[0].description.includes("曇")) {
+                } else if(this.weatherInfo[0].weather[0].description.includes("雲") || this.weatherInfo[0].weather[0].description.includes("曇")) {
                     icon = "kumori.png" 
                 } else if(this.weatherInfo[0].weather[0].description.includes("晴")){
                     icon = "sun.png"
@@ -79,6 +79,7 @@ export default {
                     icon = "yuki.png" 
                 }
             }
+            console.log(icon)
             return icon
         }
     },
@@ -98,8 +99,11 @@ export default {
             
             navigator.geolocation.getCurrentPosition(this.success, this.error)
         }
+        // 仮 （userがログインした状態で呼び出す）
+        this.fetchItems()
     },
     methods:{
+        ...mapActions(['fetchItems']),
         success (position) {
             this.latitude = position.coords.latitude
             this.longitude = position.coords.longitude
