@@ -42,5 +42,9 @@ export default {
         // login(){
         // }
     }
+    //     login1(email,pass){
+    //         this.$store.dispatch('login1', {email: this.email, pass: this.pass})    
+    //     }
+    // },
 }
 </script>
