@@ -1,32 +1,26 @@
 <template>
-  <div class="news1">
-    <div class="home">アイテムの写真を選んで</div>
-    <div class="home">あなたのクローゼットを作りましょう</div>
-    <div><img src="~/assets/closet1.png" class="pic"></div>
-    <div class="btn"><button class="button">アイテムの写真を選ぶ</button></div>
-  </div>
+    <div class="news2">
+        <div class="home">クローゼットが完成しました</div>
+        <div class="home">それでは確認に行ってましょう</div>
+        <div><img src="~/assets/closet2.png" class="pic"></div>
+        <div class="btn"><button class="button">コーディネートを確認する</button></div>
+    </div>
 </template>
-
-<script>
-export default {
-  
-}
-</script>
 
 <style lang="scss" scoped>
  $color-bg: rgb(100, 209, 230);
 
-.news1{
+.news2{
   font-family: "Hiragino Maru Gothic Pro";
   text-align: center;
-}
-.pic{
-  width: 50%;
-  height: 50%;
 }
 .home{
     font-size: 40px;
     margin: 50px 0 50px 0;
+}
+.pic{
+  width: 50%;
+  height: 50%;
 }
 .button{
   background-color: $color-bg;
@@ -54,4 +48,5 @@ export default {
   color: $color-bg;
   background-color:#fff;
 }
+
 </style>

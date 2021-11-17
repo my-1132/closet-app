@@ -4,17 +4,17 @@
     <div class="home2">コーディネートをお届けします</div>
     <div class="btn"><nuxt-link to="/signUp"><button class="button">はじめての方</button></nuxt-link></div>
     <div><nuxt-link to="/login"><button class="button2">ログイン（登録済みの方）</button></nuxt-link></div>
-    <div><nuxt-link to="/news1"><button class="button3" @click="login">Googleアカウントお持ちの方はこちらから＞</button></nuxt-link></div>
+    <div><nuxt-link to="/news1"><button class="button3" @click="gLogin">Googleアカウントお持ちの方はこちらから＞</button></nuxt-link></div>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import 'firebase/compat/firestore';
+// import firebase from 'firebase/compat/firestore';
 
 export default {
   methods:{
-      ...mapActions(["login","logout","setLoginUser", "deleteLoginUser"])
+      ...mapActions(["gLogin","gLogout","setLoginUser", "deleteLoginUser"])
     
   }
 }

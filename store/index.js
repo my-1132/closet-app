@@ -21,11 +21,12 @@ const createStore = () => {
         },
         actions: {
             // googleアカウントでのログイン
-            login() {
+            gLogin() {
                 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithRedirect(googleAuthProvider)
+                
             },
-            logout() {
+            gLogout() {
                 firebase.auth().signOut();
             },
             setLoginUser({ commit }, user) {
@@ -35,7 +36,7 @@ const createStore = () => {
                 commit("deleteLoginUser");
             },
             // 登録後のログイン
-            login1(context, payload) {
+            login(context, payload) {
                 firebase.auth().signInWithEmailAndPassword(payload.email, payload.pass)
                   .then(user => {
                       console.log('成功！')
