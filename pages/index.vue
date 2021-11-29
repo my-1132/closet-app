@@ -2,9 +2,9 @@
   <div class="home">
     <div class="home1">ようこそ</div>
     <div class="home2">コーディネートをお届けします</div>
-    <div class="btn"><nuxt-link to="/signUp"><button class="button">はじめての方</button></nuxt-link></div>
-    <div><nuxt-link to="/login"><button class="button2">ログイン（登録済みの方）</button></nuxt-link></div>
-    <div><nuxt-link to="/news1"><button class="button3" @click="gLogin">Googleアカウントお持ちの方はこちらから＞</button></nuxt-link></div>
+    <!-- <div class="btn"><nuxt-link to="/signUp"><button class="button">はじめての方</button></nuxt-link></div>
+    <div><nuxt-link to="/login"><button class="button2">ログイン（登録済みの方）</button></nuxt-link></div> -->
+    <div><button class="button" @click="gLogin">Googleアカウントお持ちの方はこちらから＞</button></div>
   </div>
 </template>
 
@@ -76,12 +76,32 @@ export default {
     background-color:$color-bg;
   }
 }
- .button3{
-  background: none;
-	border: none;
-	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+//  .button3{
+//   background: none;
+// 	border: none;
+// 	outline: none;
+// 	-webkit-appearance: none;
+// 	-moz-appearance: none;
+// 	appearance: none;
+// }
+
+@media screen and (max-width: 450px) {
+  .home1{
+    font-size: 30px;
+  }
+  .home2{
+    font-size: 24px;
+  }
+  .button{
+    width: 200px;
+    height: 75px;
+    font-size: 0.8rem;
+  }
+  .button2{
+    width: 250px;
+    height: 75px;
+    font-size: 0.8rem;
+    word-wrap:break-word;
+  }
 }
 </style>

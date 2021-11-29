@@ -43,7 +43,9 @@ const createStore = () => {
             gLogin() {
                 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithRedirect(googleAuthProvider)
-                
+                .then(
+                    this.$router.push('/news1')
+                )
             },
             gLogout() {
                 firebase.auth().signOut();
@@ -55,11 +57,14 @@ const createStore = () => {
                 commit("deleteLoginUser");
             },
             // 登録後のログイン
-            login(){
-                firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-                .then(
-                    console.log('成功！'),
-                    this.$router.push('/news1')
+            login(email,password){
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userInfo) =>{
+                    this.login_user = userInfo.user
+                    // console.log('成功！'),
+                    // this.$router.push('/news1')
+                }
+
                 ).catch((error) => {
                     alert(error)
                 });
