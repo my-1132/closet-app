@@ -10,7 +10,6 @@ const createStore = () => {
             login_user: null,
             // 選択する洋服たちを入れる
             closet: [],
-
         }),
         mutations: {
             setLoginUser(state, user) {

@@ -5,7 +5,7 @@
         <div><input type="text"></div>
         <div>パスワード</div>
         <div><input type="text"></div>
-        <div><router-link to="/news1"><button>会員登録</button></router-link></div>
+        <div><nuxt-link to="/news1"><button>会員登録</button></nuxt-link></div>
     </div>
 </template>
 

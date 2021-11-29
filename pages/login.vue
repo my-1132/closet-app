@@ -10,7 +10,7 @@
                 <div>パスワード</div>
                 <div><input type="text" v-model="pass"></div>
             </label>
-            <div><router-link to="/news1"><button class="button" type="submit" @click="login1">ログイン</button></router-link></div>
+            <div><router-link to="/news1"><button class="button" type="button" @click="login1">ログイン</button></router-link></div>
         </form>
     </div>
 </template>
