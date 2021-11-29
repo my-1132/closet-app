@@ -11,10 +11,9 @@
                     <button class="yesbtn" @click="yes(item,index)">Yes</button>
                     <button class="nobtn" @click="no(item, index)">No</button>
                 </div>
-            </div>
+            <!-- </div> -->
         </transition-group>
     </div>
-
 </template>
 
 <script>
@@ -55,17 +54,28 @@
             },
             ...mapActions(['fetchItems'])
         },
-
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@mixin btn{
+    border-radius: 30px;
+    padding: 50px;
+    width: 10%;
+    height: 60%;
+    margin:0 40px 0 40px;
+    text-align: center;
+}
     .container {
         font-family: "Hiragino Maru Gothic Pro";
+        background-color: #FFFFFF;
+        width: 450px;
+        height: 475px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+        text-align: center;
     }
-    /* .card {
-        border: solid 1px gray
-    } */
     .imgs {
         width: 300px;
         height: 300px;
@@ -82,34 +92,22 @@
     .yesbtn {
         background-color: #ADD8E6;
         color: white;
-        border-radius: 30px;
-        padding: 50px;
-        width: 10%;
-        height: 60%;
-        box-shadow: 0 2px 5px #ccc;
-    }
-    .yesbtn:hover{
+        @include btn();
+        
+        &:hover{
         background-color: rgb(121, 196, 220);
         cursor: pointer;
+        }
     }
     .nobtn {
         background-color: #a8a6a6;
         color: white;
-        border-radius: 30px;
-        padding: 50px;
-        margin-left: 10%;
-        width: 10%;
-        height: 60%;
-        box-shadow: 0 2px 5px #ccc;
-    }
-    .nobtn:hover{
+        @include btn();
+        
+        &:hover{
         background-color: rgb(145, 145, 145);
         cursor: pointer;
+        }
     }
-    .card {
-        text-align: center;
-    }
-    .v-move {
-        transition: transform 1s;
-    }
+    
 </style>

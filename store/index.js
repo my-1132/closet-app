@@ -43,7 +43,9 @@ const createStore = () => {
             gLogin() {
                 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithRedirect(googleAuthProvider)
-                
+                .then(
+                    this.$router.push('/news1')
+                )
             },
             gLogout() {
                 firebase.auth().signOut();
@@ -55,14 +57,20 @@ const createStore = () => {
                 commit("deleteLoginUser");
             },
             // 登録後のログイン
-            login(context, payload) {
-                firebase.auth().signInWithEmailAndPassword(payload.email, payload.pass)
-                    .then(user => {
-                        console.log('成功！')
-                    }).catch((error) => {
-                        alert(error)
-                    })
+            login(email,password){
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userInfo) =>{
+                    this.login_user = userInfo.user
+                    // console.log('成功！'),
+                    // this.$router.push('/news1')
+                }
+
+                ).catch((error) => {
+                    alert(error)
+                });
             },
+    
+
             // firebaseの洋服を取得する
             // ユーザーが新規登録した時点で呼び出す
             fetchItems({ commit }) {
