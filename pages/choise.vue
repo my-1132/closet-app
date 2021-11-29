@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <h2>クローゼットの作成</h2>
-        <transition-group name="list" tag="div">
             <div class="card" v-for="(item, index) in cloth" :key="item.id">
                 <!-- item.idとstatusが一致すれば表示する -->
                 <div v-if="item.id === status">
@@ -12,7 +11,7 @@
                     <button class="nobtn" @click="no(item, index)">No</button>
                 </div>
             <!-- </div> -->
-        </transition-group>
+            </div>
     </div>
 </template>
 
@@ -38,21 +37,26 @@
         methods: {
             // ユーザーが持っているアイテムを入れる
             yes(item, index){
-                // 表示するリストから削除
                 this.cloth.splice(index, 1)
                 this.yBox.push(item)
                 // 表示切り替えの為の処理
                 this.status = this.status + 1
-                console.log(this.yBox)
+                // firestoreに保存
+                this.editCloset(this.yBox)
+                if(this.cloth.length === 0){
+                    this.$router.push('/news2')
+                }
             },
             // ユーザーが持っていないアイテムを入れる
             no(item, index){
                 this.cloth.splice(index, 1)
                 this.nBox.push(item)
                 this.status = this.status + 1
-                console.log(this.nBox)
+                if(this.cloth.length === 0){
+                    this.$router.push('/news2')
+                }
             },
-            ...mapActions(['fetchItems'])
+            ...mapActions(['fetchItems', 'editCloset'])
         },
     }
 </script>
@@ -66,6 +70,13 @@
     margin:0 40px 0 40px;
     text-align: center;
 }
+@mixin img {
+        width: 300px;
+        height: 300px;
+        padding: 5%;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px #ccc;
+    }
     .container {
         font-family: "Hiragino Maru Gothic Pro";
         background-color: #FFFFFF;
@@ -77,11 +88,7 @@
         text-align: center;
     }
     .imgs {
-        width: 300px;
-        height: 300px;
-        padding: 5%;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px #ccc;
+        @include img();
     }
     .imgs:hover {
         transform: translateY(-5px);

@@ -3,20 +3,31 @@
     <div class="home">アイテムの写真を選んで</div>
     <div class="home">あなたのクローゼットを作りましょう</div>
     <div><img src="~/assets/closet1.png" class="pic"></div>
-    <div class="btn"><button class="button">アイテムの写真を選ぶ</button></div>
+    <div class="btn"><button class="button"><nuxt-link to="/choise">アイテムの写真を選ぶ</nuxt-link></button></div>
   </div>
 </template>
 
 <script>
   import { mapActions } from 'vuex'
+  import firebase from 'firebase/compat/app'
+  import 'firebase/compat/auth';
+  import 'firebase/compat/firestore';
+
 export default {
   created(){
-    this.fetchItems()
+    firebase.auth().onAuthStateChanged(user =>{
+      if(user) {
+        this.setLoginUser(user);
+        this.fetchItems()
+        this.fetchCloset()
+      } else {
+          this.deleteLoginUser()
+        }
+    })
   },
   methods:{
-    ...mapActions(['fetchItems'])
+    ...mapActions(['fetchItems', 'setLoginUser', 'deleteLoginUser', 'fetchCloset'])
   }
-  
 }
 </script>
 

@@ -3,7 +3,7 @@
         <div class="home">クローゼットが完成しました</div>
         <div class="home">それでは確認に行ってましょう</div>
         <div><img src="~/assets/closet2.png" class="pic"></div>
-        <div class="btn"><button class="button">コーディネートを確認する</button></div>
+        <div class="btn"><button class="button"><nuxt-link to="/display">コーディネートを確認する</nuxt-link></button></div>
     </div>
 </template>
 

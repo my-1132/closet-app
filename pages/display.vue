@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <h2>コーディネート一覧</h2>
-        <nuxt-link to="/choise">Choise</nuxt-link>
         <div class="container2">
             <span class="string">今日</span>
             <!-- <span class="location">@東京</span> -->
@@ -27,11 +26,41 @@
                     <div class="advice">{{ fasionAdvice }}</div>
                 </div>
         </div>
+        <div class="container3">
+            <span v-for="item in clothList.chosens" :key="item.id">
+                    <span v-if="item.season === 'all' ">
+                        <div class="all">オール</div>
+                            <span>{{ item. title }}</span>
+                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
+                    </span>
+                    <span v-if="item.season === 'spring' ">
+                        <div class="spring">春</div>
+                            <span>{{ item. title }}</span>
+                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
+                    </span>
+                    <span v-if="item.season === 'summer' ">
+                        <div class="summer">夏</div>
+                            <span>{{ item. title }}</span>
+                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
+                    </span>
+                    <span v-if="item.season === 'autumn' ">
+                        <div class="autumn">秋</div>
+                            <span>{{ item. title }}</span>
+                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
+                    </span>
+                    <span v-if="item.season === 'winter' ">
+                        <div class="winter">冬</div>
+                            <span>{{ item. title }}</span>
+                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
+                    </span>
+
+            </span>
+        </div>
     </div>
 </template>
 
 <script>
-    import { mapActions} from 'vuex'
+    import { mapActions, mapState} from 'vuex'
 export default {
     data: () => {
         return {
@@ -42,7 +71,7 @@ export default {
     },
     computed: {
         today(){
-        // 気象情報表示部分の今日の日付
+            // 気象情報表示部分の今日の日付
             const now = new  Date()
             const week = ['日','月','火','水','木','金','土']
             return `${now.getMonth()+1}/${now.getDate()}（${week[now.getDay()]}）`
@@ -79,23 +108,19 @@ export default {
                     icon = "yuki.png" 
                 }
             }
-            console.log(icon)
             return icon
-        }
+        },
+        ...mapState(['clothList'])
     },
     created() {
         // 画面遷移した時点で現在地を取得
+        console.log(this.clothList)
         if (process.client) {
             // ユーザーが利用しているブラウザがGeolocation APIをサポートしているか判定
             if (!navigator.geolocation) {
                 alert('現在地情報を取得できませんでした。お使いのブラウザでは現在地情報を利用できない可能性があります。エリアを入力してください。')
                 return
             }
-            // const options = {
-            //     enableHighAccuracy: false,
-            //     timeout: 5000,
-            //     maximumAge: 0
-            // }
             
             navigator.geolocation.getCurrentPosition(this.success, this.error)
         }
@@ -107,7 +132,6 @@ export default {
             this.longitude = position.coords.longitude
             this.$axios.$get(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.latitude}&lon=${this.longitude}&lang=ja&units=metric&appid=${process.env.API_KEY}`)
             .then(function(response){
-                console.log(response.daily[0])
                 this.weatherInfo.push(response.daily[0])
             }.bind(this))
             .catch(error => {
@@ -137,8 +161,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    @mixin box($background-color) {
+        background-color: $background-color;
+    }
+    .seasontitle {
+        position: relative;
+        display: inline-block;
+        margin: 1.5em 15px 1.5em 0;
+        padding: 0 5px;
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        text-align: center;
+        color: #eee;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+
+
     .container {
         font-family: "Hiragino Maru Gothic Pro";
+    }
+    .container3 {
+        display: flex;
+        flex-wrap: wrap;
     }
     .red {
         color: red;
@@ -160,7 +209,7 @@ export default {
         border-radius: 5px;
         padding-left: 10px;
         padding-top:4px;
-        width: 90%;
+        width: 95%;
         height: 2rem
     }
     .container2{
@@ -169,5 +218,33 @@ export default {
         padding: 3px 5px;
         width: 70%;
     }
+    .imgs {
+        width: 300px;
+        height: 300px;
+        padding: 5%;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px #ccc;
+    }
+    .summer {
+        @include box(#13e4c8);
+        @extend .seasontitle;
+    }
+    .spring {
+        @include box(#eea0dd);
+        @extend .seasontitle;
+    }
+    .autumn {
+        @include box(#e49b13);
+        @extend .seasontitle;
+    }
+    .winter {
+        @include box(#72afe0);
+        @extend .seasontitle;
+    }
+    .all {
+        @include box(rgb(223, 220, 56));
+        @extend .seasontitle;
+    }
+
 </style>
 
