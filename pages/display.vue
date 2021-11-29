@@ -99,8 +99,6 @@ export default {
             
             navigator.geolocation.getCurrentPosition(this.success, this.error)
         }
-        // 仮 （userがログインした状態で呼び出す）
-        this.fetchItems()
     },
     methods:{
         ...mapActions(['fetchItems']),
@@ -138,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .container {
         font-family: "Hiragino Maru Gothic Pro";
     }
