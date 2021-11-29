@@ -10,7 +10,8 @@ const createStore = () => {
             login_user: null,
             // 選択する洋服たちを入れる
             closet: [],
-
+            // ユーザーのクローゼット
+            clothList: []
         }),
         mutations: {
             setLoginUser(state, user) {
@@ -35,6 +36,16 @@ const createStore = () => {
                     state.closet.push(item)
                 })
                 console.log(state.closet)
+            },
+            // statusが0のクローゼットはclothList{}に保存
+            addCloth(state, { id, cartItem }) {
+                cartItem.id = id
+                state.clothList = cartItem
+            },
+            updateCloset(state, selectItem) {
+                console.log(selectItem)
+                console.log(state.clothList)
+                state.clothList.chosens = selectItem
             }
 
         },
@@ -43,9 +54,9 @@ const createStore = () => {
             gLogin() {
                 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithRedirect(googleAuthProvider)
-                .then(
-                    this.$router.push('/news1')
-                )
+                    .then(
+                        this.$router.push('/news1')
+                    )
             },
             gLogout() {
                 firebase.auth().signOut();
@@ -56,21 +67,6 @@ const createStore = () => {
             deleteLoginUser({ commit }) {
                 commit("deleteLoginUser");
             },
-            // 登録後のログイン
-            login(email,password){
-                firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((userInfo) =>{
-                    this.login_user = userInfo.user
-                    // console.log('成功！'),
-                    // this.$router.push('/news1')
-                }
-
-                ).catch((error) => {
-                    alert(error)
-                });
-            },
-    
-
             // firebaseの洋服を取得する
             // ユーザーが新規登録した時点で呼び出す
             fetchItems({ commit }) {
@@ -80,7 +76,48 @@ const createStore = () => {
                             commit("fetchItems", doc.data())
                         })
                     })
-            }
+            },
+            fetchCloset({ commit, getters }) {
+                firebase.firestore().collection(`users/${getters.uid}/closet`)
+                    .get().then(snapshot => {
+                        // ログインが初めての場合、空のクローゼットを作成
+                        if (snapshot.empty) {
+                            this.dispatch('setCloset')
+                        }
+                        snapshot.forEach(doc => {
+                            console.log(doc.data())
+                            // クローゼットがある場合
+                            commit("addCloth", { id: doc.id, cartItem: doc.data() })
+                        })
+                    })
+            },
+            // 空のクローゼットを作成
+            setCloset({ getters, commit }) {
+                firebase.firestore().collection(`users/${getters.uid}/closet`)
+                    .add({
+                        chosens: []
+                    }).then(doc => {
+                        console.log(doc)
+                        commit('addCloth', ({
+                            id: doc.id, cartItem: {
+                                chosens: []
+                            }
+                        }))
+                    })
+            },
+            // 自分のクローゼットにyesで選択した洋服のみを入れる
+            editCloset({ getters, commit, state }, yBox) {
+                // stateのclothListのコピーを作成
+                const using = Object.assign({}, state.clothList)
+                if (getters.uid) {
+                    const newBox = yBox.slice()
+                    using.chosens = state.clothList.chosens.slice()
+                    using.chosens = newBox
+                    firebase.firestore().collection(`users/${getters.uid}/closet`)
+                        .doc(using.id).update({ chosens: using.chosens })
+                    commit('updateCloset', using.chosens)
+                }
+            },
         },
         getters: {
             uid: state => state.login_user ? state.login_user.uid : null,

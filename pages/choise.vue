@@ -1,22 +1,19 @@
 <template>
     <div class="container">
         <!-- <h2>クローゼットの作成</h2> -->
-        <transition-group name="list">
-            <!-- <div class="card"> -->
-                <div  v-for="(item, index) in cloth" :key="item.id">
-                    <!-- item.idとstatusが一致すれば表示する -->
-                    <div v-if="item.id === status">
-                        <img class="imgs" :src="require(`~/assets/${item.url}`)" />
-                        <h3>{{ item. title }}</h3>
-                        <h4>これに似たアイテムを持っていますか？</h4>
-                        <div class="flex">
-                            <button class="yesbtn" @click="yes(item,index)">Yes</button>
-                            <button class="nobtn" @click="no(item, index)">No</button>
-                        </div>
+            <div class="card" v-for="(item, index) in cloth" :key="item.id">
+                <!-- item.idとstatusが一致すれば表示する -->
+                <div v-if="item.id === status">
+                    <img class="imgs" :src="require(`~/assets/${item.url}`)" />
+                    <h3>{{ item. title }}</h3>
+                    <h4>これに似たアイテムを持っていますか？</h4>
+                    <div class="flex">
+                        <button class="yesbtn" @click="yes(item,index)">Yes</button>
+                        <button class="nobtn" @click="no(item, index)">No</button>
                     </div>
                 </div>
             <!-- </div> -->
-        </transition-group>
+            </div>
     </div>
 </template>
 
@@ -26,7 +23,9 @@
         data(){
             return {
                 cloth: [],
+                // 持っている服を入れるbox
                 yBox: [],
+                // 持っていない服を入れるbox
                 nBox: [],
                 status: 1
             }
@@ -42,17 +41,24 @@
             yes(item, index){
                 this.cloth.splice(index, 1)
                 this.yBox.push(item)
+                // 表示切り替えの為の処理
                 this.status = this.status + 1
-                console.log(this.yBox)
+                // firestoreに保存
+                this.editCloset(this.yBox)
+                if(this.cloth.length === 0){
+                    this.$router.push('/news2')
+                }
             },
             // ユーザーが持っていないアイテムを入れる
             no(item, index){
                 this.cloth.splice(index, 1)
                 this.nBox.push(item)
                 this.status = this.status + 1
-                console.log(this.nBox)
+                if(this.cloth.length === 0){
+                    this.$router.push('/news2')
+                }
             },
-            ...mapActions(['fetchItems'])
+            ...mapActions(['fetchItems', 'editCloset'])
         },
     }
 </script>
@@ -68,6 +74,11 @@
     font-size: 25px;
     margin: 0 60px 0 48px;
 }
+@mixin img {
+        width: 280px;
+        height: 280px;
+        padding: 5%;
+    }
     .container {
         font-family: "Hiragino Maru Gothic Pro";
         background-color: #FFFFFF;
@@ -79,15 +90,14 @@
         text-align: center;
     }
     .imgs {
-        width: 300px;
-        height: 300px;
+        @include img();
     }
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-    .fade-enter, .fade-leave-active {
-        opacity: 0
-    }
+    // .imgs:hover {
+    //     transform: translateY(-5px);
+    //     box-shadow: 0 7px 34px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    //     transition: all .5s;
+    //     cursor: pointer;
+    // }
     .flex{
         display: flex;
     }
