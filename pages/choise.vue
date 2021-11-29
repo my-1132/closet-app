@@ -9,8 +9,10 @@
                         <img class="imgs" :src="require(`~/assets/${item.url}`)" />
                         <h3>{{ item. title }}</h3>
                         <h4>これに似たアイテムを持っていますか？</h4>
-                        <button class="yesbtn" @click="yes(item,index)">Yes</button>
-                        <button class="nobtn" @click="no(item, index)">No</button>
+                        <div class="flex">
+                            <button class="yesbtn" @click="yes(item,index)">Yes</button>
+                            <button class="nobtn" @click="no(item, index)">No</button>
+                        </div>
                     </div>
                 </div>
             <!-- </div> -->
@@ -57,12 +59,14 @@
 
 <style lang="scss" scoped>
 @mixin btn{
-    border-radius: 30px;
-    padding: 50px;
-    width: 10%;
-    height: 60%;
-    margin:0 40px 0 40px;
+    border-radius: 100px;
+    padding: 50px 50px 50px 50px;
+    width: 125px;
+    height: 125px;
     text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin: 0 60px 0 48px;
 }
     .container {
         font-family: "Hiragino Maru Gothic Pro";
@@ -70,7 +74,7 @@
         width: 450px;
         height: 475px;
         margin: 7em auto;
-        border-radius: 1.5em;
+        border-radius: 2.5em;
         box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
         text-align: center;
     }
@@ -84,9 +88,13 @@
     .fade-enter, .fade-leave-active {
         opacity: 0
     }
+    .flex{
+        display: flex;
+    }
     .yesbtn {
         background-color: #ADD8E6;
         color: white;
+        margin:0 40px 0 40px;
         @include btn();
         
         &:hover{
@@ -105,4 +113,29 @@
         }
     }
     
+@media screen and (max-width: 450px) {
+    @mixin btn{
+    padding: 50px 50px 50px 50px;
+    width: 80px;
+    height: 80px;
+    margin: 20px 40px 0 27px;
+    font-size: 25px;
+}
+    .container {
+        width: 325px;
+        height: 475px;
+    }
+    .imgs {
+        width: 275px;
+        height: 275px;
+    }
+    .yesbtn {
+        @include btn();
+    }
+    .nobtn {
+        @include btn();
+        
+    }
+
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="news1">
     <div class="home">アイテムの写真を選んで</div>
-    <div class="home">あなたのクローゼットを作りましょう</div>
-    <div><img src="~/assets/closet1.png" class="pic"></div>
+    <div class="home1">あなたのクローゼットを作りましょう</div>
+    <div class="pic1"><img src="~/assets/closet1.png" class="pic"></div>
     <div class="btn"><button class="button">アイテムの写真を選ぶ</button></div>
   </div>
 </template>
@@ -15,18 +15,25 @@ export default {
 
 <style lang="scss" scoped>
  $color-bg: rgb(100, 209, 230);
-
+@mixin homeStyle{
+  font-size: 35px;
+}
 .news1{
   font-family: "Hiragino Maru Gothic Pro";
   text-align: center;
 }
 .pic{
-  width: 50%;
-  height: 50%;
+  width: 550px;
+  height: 350px;
+  margin-top: 70px
 }
 .home{
-    font-size: 40px;
-    margin: 50px 0 50px 0;
+  @include homeStyle();  
+  margin: 50px 0 50px 0;
+
+}
+.home1{
+  @include homeStyle();
 }
 .button{
   background-color: $color-bg;
@@ -57,19 +64,35 @@ export default {
 
 @media screen and (max-width: 450px){
   $color-bg: rgb(100, 209, 230);
+  @mixin homeStyle{
+  font-size: 20px;
+  font-weight: 700;
+}
 
   .news1{
     font-family: "Hiragino Maru Gothic Pro";
     text-align: center;
-    font-size: 30px;
+    // font-size: 30px;
+    
   }
   .pic{
-    width: 300px;
-    height: 50%;
+    width: 340px;
+    height: 225px;
+    position: absolute;          /* 位置指定 */
+    padding: 20px;               /* 余白指定 */
+    top:  0;                     /* 位置指定 */
+    bottom:  0;                  /* 位置指定 */
+    left:  0;                    /* 位置指定 */
+    right:  0;                   /* 位置指定 */
+    margin:  auto;  
   }
   .home{
-      font-size: 24px;
-      margin: 50px 10px 50px 10px;
+    @include homeStyle();
+    margin-top: 100px
+  }
+  .home1{
+    @include homeStyle();
+
   }
   .button{
     background-color: $color-bg;
@@ -92,6 +115,8 @@ export default {
     letter-spacing: 0.1em;
     color: #fff;
     border-radius: 0.5rem;
+    margin: 405px 0 0 0;
+
   }
   .button:hover{
     color: $color-bg;

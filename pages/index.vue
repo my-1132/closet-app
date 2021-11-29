@@ -4,7 +4,11 @@
     <div class="home2">コーディネートをお届けします</div>
     <!-- <div class="btn"><nuxt-link to="/signUp"><button class="button">はじめての方</button></nuxt-link></div>
     <div><nuxt-link to="/login"><button class="button2">ログイン（登録済みの方）</button></nuxt-link></div> -->
-    <div><button class="button" @click="gLogin">Googleアカウントお持ちの方はこちらから＞</button></div>
+    <div>
+      <button class="button" @click="gLogin">
+        ログイン
+      </button>
+    </div>
   </div>
 </template>
 
@@ -60,6 +64,7 @@ export default {
   background-color: $color-bg;
   color: #fff;
   @include btnStyle();
+  margin-top: 100px;
 
   &:hover{
     color: $color-bg;
@@ -87,21 +92,22 @@ export default {
 
 @media screen and (max-width: 450px) {
   .home1{
-    font-size: 30px;
+    font-size: 43px;
   }
   .home2{
-    font-size: 24px;
+    font-size: 21px;
   }
   .button{
-    width: 200px;
-    height: 75px;
-    font-size: 0.8rem;
+    width:200px;
+    height: 55px;
+    font-size: 15px;
+    margin: 300px 0 0 0;
   }
-  .button2{
-    width: 250px;
-    height: 75px;
-    font-size: 0.8rem;
-    word-wrap:break-word;
-  }
+  // .button2{
+  //   width: 300px;
+  //   height: 75px;
+  //   font-size: 0.8rem;
+  //   word-wrap:break-word;
+  // }
 }
 </style>
