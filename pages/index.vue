@@ -18,8 +18,8 @@ import { mapActions } from 'vuex';
 
 export default {
   methods:{
-      ...mapActions(["gLogin","gLogout","setLoginUser", "deleteLoginUser"])
-    
+      ...mapActions(["gLogin","setLoginUser"])
+
   }
 }
 </script>

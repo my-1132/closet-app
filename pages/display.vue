@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <Header />
         <h2>コーディネート一覧</h2>
         <div class="container2">
             <span class="string">今日</span>
@@ -28,20 +29,20 @@
         </div>
         <div class="container3">
             <span v-for="item in clothList.chosens" :key="item.id">
-                    <span v-if="item.season === 'all' ">
+                    <span v-if="item.season === 'all' "> 
                         <div class="all">オール</div>
                             <span>{{ item. title }}</span>
                             <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
                     </span>
-                    <span v-if="item.season === 'spring' ">
+                     <span v-if="item.season === 'spring' ">
                         <div class="spring">春</div>
                             <span>{{ item. title }}</span>
                             <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
                     </span>
                     <span v-if="item.season === 'summer' ">
-                        <div class="summer">夏</div>
+                        <div class="summer">夏</div> 
                             <span>{{ item. title }}</span>
-                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
+                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div> 
                     </span>
                     <span v-if="item.season === 'autumn' ">
                         <div class="autumn">秋</div>
@@ -52,16 +53,25 @@
                         <div class="winter">冬</div>
                             <span>{{ item. title }}</span>
                             <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
-                    </span>
-
+                    </span> 
             </span>
+        </div>
+        <div class="container4">
+            <div>
+                <span v-for="item in clothList.chosens" :key="item.id"></span>
+    
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import { mapActions, mapState} from 'vuex'
+    import { mapActions, mapState,mapGetters} from 'vuex'
+    import Header from "../.nuxt/components/Header.vue"
 export default {
+    components:{
+        Header
+    },
     data: () => {
         return {
             latitude: 0,
@@ -110,9 +120,11 @@ export default {
             }
             return icon
         },
-        ...mapState(['clothList'])
+        ...mapState(['clothList']),
+        ...mapGetters(['clothListBySeason'])
     },
     created() {
+        console.log(this.clothListBySeason);
         // 画面遷移した時点で現在地を取得
         console.log(this.clothList)
         if (process.client) {
@@ -124,6 +136,7 @@ export default {
             
             navigator.geolocation.getCurrentPosition(this.success, this.error)
         }
+        
     },
     methods:{
         ...mapActions(['fetchItems']),
@@ -222,8 +235,8 @@ export default {
         width: 300px;
         height: 300px;
         padding: 5%;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px #ccc;
+        // border-radius: 5px;
+        // box-shadow: 0 2px 5px #ccc;
     }
     .summer {
         @include box(#13e4c8);

@@ -60,6 +60,7 @@ const createStore = () => {
             },
             gLogout() {
                 firebase.auth().signOut();
+                console.log('ログアウトしました');
             },
             setLoginUser({ commit }, user) {
                 commit("setLoginUser", user);
@@ -121,7 +122,23 @@ const createStore = () => {
         },
         getters: {
             uid: state => state.login_user ? state.login_user.uid : null,
+            clothListBySeason: (state) => { 
+                // const all =  state.clothList.filter(cL => cL.season === "all")
+                // const spring =  state.clothList.filter(cL => cL.season === "spring")
+                // const summer =  state.clothList.filter(cL => cL.season === "summer")
+                // const autumn =  state.clothList.filter(cL => cL.season === "autumn")
+                // const winter =  state.clothList.filter(cL => cL.season === "winter")
+         
+                // return { all, spring, summer, autumn, winter, }
 
+                // console.log(state.clothList);
+                // if(state.clothList[0] && state.clothList === null){
+                //     console.log('空です');
+                // }else{
+                //     console.log('値入ってます');
+                // }
+                // return{}
+            }
         }
     })
 }
