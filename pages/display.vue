@@ -1,65 +1,61 @@
 <template>
     <div class="container">
         <Header />
-        <h2>コーディネート一覧</h2>
-        <div class="container2">
-            <span class="string">今日</span>
-            <!-- <span class="location">@東京</span> -->
-                <span class="today">{{ today }}</span>
-                <div v-if="this.weatherInfo[0]">
-                    <span class="string">最高</span>
-                    <span class="red">{{Math.floor(weatherInfo[0].temp.max)}}&deg;C</span>&nbsp;&nbsp;
-                    <span class="string">最低</span>
-                    <span class="blue">{{Math.floor(weatherInfo[0].temp.min)}}&deg;C</span>
-                    <span><img :src="require(`~/assets/${icons}`)" width="3%" height="3%"/>{{ weatherInfo[0].weather[0].description }}</span>
-                </div>
-            <!-- apiでのデータ取得に時間がかかる為、反映されるまでの表示 -->
-                <div v-if="!this.weatherInfo[0]">
-                    気象情報取得中…
-                </div>
-            <!-- データ取得後、気象情報を表示-->
-                <div v-if="this.weatherInfo[0]">
-                    <span>
-                        <span>朝</span>{{ Math.floor(weatherInfo[0].temp.morn) }}&deg;C
-                        <span>昼</span>{{ Math.floor(weatherInfo[0].temp.day) }}&deg;C
-                        <span>夜</span>{{ Math.floor(weatherInfo[0].temp.night) }}&deg;C
-                    </span>
-                    <div class="advice">{{ fasionAdvice }}</div>
-                </div>
-        </div>
+        <h2>クローゼット</h2>
         <div class="container3">
-            <span v-for="item in clothList.chosens" :key="item.id">
-                    <span v-if="item.season === 'all' "> 
-                        <div class="all">オール</div>
-                            <span>{{ item. title }}</span>
-                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
-                    </span>
-                     <span v-if="item.season === 'spring' ">
-                        <div class="spring">春</div>
-                            <span>{{ item. title }}</span>
-                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
-                    </span>
-                    <span v-if="item.season === 'summer' ">
-                        <div class="summer">夏</div> 
-                            <span>{{ item. title }}</span>
-                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div> 
-                    </span>
-                    <span v-if="item.season === 'autumn' ">
-                        <div class="autumn">秋</div>
-                            <span>{{ item. title }}</span>
-                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
-                    </span>
-                    <span v-if="item.season === 'winter' ">
-                        <div class="winter">冬</div>
-                            <span>{{ item. title }}</span>
-                            <div><img class="imgs" :src="require(`~/assets/${item.url}`)" /></div>
-                    </span> 
-            </span>
-        </div>
-        <div class="container4">
-            <div>
-                <span v-for="item in clothList.chosens" :key="item.id"></span>
-    
+            <div class="all">
+                オール
+                <span class="items">{{all.length}}アイテム</span>
+            </div>
+            <div v-if="all.length === 0 ">
+                <span>アイテムがありません。</span>
+            </div>
+            <div v-for="allItem in all" :key="allItem.id">
+                <span>{{allItem. title }}</span>
+                <div><img class="imgs" :src="require(`~/assets/${allItem.url}`)" /></div>
+            </div>
+            <div class="spring">
+                春
+                <span class="items">{{spring.length}}アイテム</span>
+            </div>
+            <div v-if="spring.length === 0 ">
+                <span>アイテムがありません。</span>
+            </div>
+            <div v-for="springItem in spring" :key="springItem.id">
+                <span>{{springItem. title }}</span>
+                <div><img class="imgs" :src="require(`~/assets/${springItem.url}`)" /></div>
+            </div>
+            <div class="summer">
+                夏
+                <span class="items">{{summer.length}}アイテム</span>
+            </div>
+            <div v-if="summer.length === 0 ">
+                <span>アイテムがありません。</span>
+            </div>
+            <div v-for="summerItem in summer " :key="summerItem.id">
+                <span>{{summerItem. title }}</span>
+                <div><img class="imgs" :src="require(`~/assets/${summerItem.url}`)" /></div>                </div>
+            <div class="autumn">
+                秋
+                <span class="items">{{autumn.length}}アイテム</span>
+            </div>
+            <div v-if="autumn.length === 0 ">
+                <span>アイテムがありません。</span>
+            </div>
+            <div v-for="autumnItem in autumn" :key="autumnItem.id">
+                <span>{{autumnItem. title }}</span>
+                <div><img class="imgs" :src="require(`~/assets/${autumnItem.url}`)" /></div>
+            </div>
+            <div class="winter">
+                冬
+                <span class="items">{{winter.length}}アイテム</span>
+            </div>
+            <div v-if="winter.length === 0 ">
+                <span>アイテムがありません。</span>
+            </div>
+            <div v-for="winterItem in winter" :key="winterItem.id">
+                <span>{{winterItem. title }}</span>
+                <div><img class="imgs" :src="require(`~/assets/${winterItem.url}`)" /></div>
             </div>
         </div>
     </div>
@@ -121,10 +117,16 @@ export default {
             return icon
         },
         ...mapState(['clothList']),
-        ...mapGetters(['clothListBySeason'])
+        ...mapGetters(['all','spring','summer','autumn','winter'])
     },
     created() {
-        console.log(this.clothListBySeason);
+        console.log(this.clothList);
+        console.log(this.all);
+        console.log(this.spring);
+        console.log(this.summer);
+        console.log(this.autumn);
+        console.log(this.winter);
+
         // 画面遷移した時点で現在地を取得
         console.log(this.clothList)
         if (process.client) {
@@ -179,21 +181,29 @@ export default {
         background-color: $background-color;
     }
     .seasontitle {
-        position: relative;
-        display: inline-block;
-        margin: 1.5em 15px 1.5em 0;
-        padding: 0 5px;
-        width: 90px;
-        height: 90px;
-        line-height: 90px;
-        text-align: center;
-        color: #eee;
+        // position: relative;
+        // display: inline-block;
+        // margin: 1.5em 15px 1.5em 0;
+        // padding: 0 5px;
+        // width: 90px;
+        // height: 90px;
+        // line-height: 90px;
+        // text-align: center;
+        // color: #eee;
+        // font-size: 20px;
+        // font-weight: bold;
+        // border-radius: 50%;
+        // box-sizing: border-box;
+        width: 100%;
+        padding: 25px;
+        margin-top: 15px;
         font-size: 20px;
-        font-weight: bold;
-        border-radius: 50%;
-        box-sizing: border-box;
-    }
 
+    }
+    .items{
+        text-align: right;
+        font-size: 12px;
+    }
 
     .container {
         font-family: "Hiragino Maru Gothic Pro";
@@ -201,6 +211,7 @@ export default {
     .container3 {
         display: flex;
         flex-wrap: wrap;
+        // text-align: center;
     }
     .red {
         color: red;

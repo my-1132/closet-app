@@ -122,23 +122,38 @@ const createStore = () => {
         },
         getters: {
             uid: state => state.login_user ? state.login_user.uid : null,
-            clothListBySeason: (state) => { 
-                // const all =  state.clothList.filter(cL => cL.season === "all")
-                // const spring =  state.clothList.filter(cL => cL.season === "spring")
-                // const summer =  state.clothList.filter(cL => cL.season === "summer")
-                // const autumn =  state.clothList.filter(cL => cL.season === "autumn")
-                // const winter =  state.clothList.filter(cL => cL.season === "winter")
+            // clothListBySeason: (state) => { 
+            //     const all =  state.clothList.filter(cL => cL.season === "all")
+            //     const spring =  state.clothList.filter(cL => cL.season === "spring")
+            //     const summer =  state.clothList.filter(cL => cL.season === "summer")
+            //     const autumn =  state.clothList.filter(cL => cL.season === "autumn")
+            //     const winter =  state.clothList.filter(cL => cL.season === "winter")
          
-                // return { all, spring, summer, autumn, winter, }
+            //     return { all, spring, summer, autumn, winter, }
 
-                // console.log(state.clothList);
                 // if(state.clothList[0] && state.clothList === null){
                 //     console.log('空です');
                 // }else{
                 //     console.log('値入ってます');
                 // }
                 // return{}
-            }
+            // }
+            all:(state) => {
+                return state.clothList.chosens.filter(cL => cL.season === "all")
+            },
+            spring:(state) => {
+                return state.clothList.chosens.filter(cL => cL.season === "spring")
+            },
+            summer:(state) => {
+                return state.clothList.chosens.filter(cL => cL.season === "summer")
+            },
+            autumn:(state) => {
+                return state.clothList.chosens.filter(cL => cL.season === "autumn")
+            },
+            winter:(state) => {
+                return state.clothList.chosens.filter(cL => cL.season === "winter")
+            },
+            
         }
     })
 }
