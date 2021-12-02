@@ -54,9 +54,9 @@ const createStore = () => {
             gLogin() {
                 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithRedirect(googleAuthProvider)
-                    .then(
-                        this.$router.push('/news1')
-                    )
+                // .then(
+                //     this.$router.push('/news1')
+                // )
             },
             gLogout() {
                 firebase.auth().signOut();
@@ -128,32 +128,32 @@ const createStore = () => {
             //     const summer =  state.clothList.filter(cL => cL.season === "summer")
             //     const autumn =  state.clothList.filter(cL => cL.season === "autumn")
             //     const winter =  state.clothList.filter(cL => cL.season === "winter")
-         
+
             //     return { all, spring, summer, autumn, winter, }
 
-                // if(state.clothList[0] && state.clothList === null){
-                //     console.log('空です');
-                // }else{
-                //     console.log('値入ってます');
-                // }
-                // return{}
+            // if(state.clothList[0] && state.clothList === null){
+            //     console.log('空です');
+            // }else{
+            //     console.log('値入ってます');
             // }
-            all:(state) => {
+            // return{}
+            // }
+            all: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "all")
             },
-            spring:(state) => {
+            spring: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "spring")
             },
-            summer:(state) => {
+            summer: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "summer")
             },
-            autumn:(state) => {
+            autumn: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "autumn")
             },
-            winter:(state) => {
+            winter: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "winter")
             },
-            
+
         }
     })
 }

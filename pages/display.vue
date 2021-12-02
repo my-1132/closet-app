@@ -63,11 +63,11 @@
 
 <script>
     import { mapActions, mapState,mapGetters} from 'vuex'
-    import Header from "../.nuxt/components/Header.vue"
+    // import Header from "../.nuxt/components/Header.vue"
 export default {
-    components:{
-        Header
-    },
+    // components:{
+    //     Header
+    // },
     data: () => {
         return {
             latitude: 0,
@@ -246,8 +246,6 @@ export default {
         width: 300px;
         height: 300px;
         padding: 5%;
-        // border-radius: 5px;
-        // box-shadow: 0 2px 5px #ccc;
     }
     .summer {
         @include box(#13e4c8);
