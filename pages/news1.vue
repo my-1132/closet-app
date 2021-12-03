@@ -4,7 +4,7 @@
     <div class="home1">あなたのクローゼットを作りましょう</div>
     <div class="pic1"><img src="~/assets/closet1.png" class="pic"></div>
     <div class="btn"><nuxt-link to="/choise"><button class="button">アイテムの写真を選ぶ</button></nuxt-link>
-    <nuxt-link to="/coordinate"><button class="button">クローゼットをみる</button></nuxt-link></div>
+    <nuxt-link to="/coordinate"><button class="button">コーディネートを確認する</button></nuxt-link></div>
   </div>
 </template>
 

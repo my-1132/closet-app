@@ -152,6 +152,8 @@ const createStore = () => {
             shoes:(state) => {
                 return state.clothList.chosens.filter(cL => cL.tag === "shoes")
             },
+            getCloth: state => state.clothList,
+
 
         }
     })
