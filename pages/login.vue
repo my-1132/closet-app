@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- $color-bg: rgb(100, 209, 230);
+    $color-bg: rgb(100, 209, 230);
 
 .word1{
     text-align: center;

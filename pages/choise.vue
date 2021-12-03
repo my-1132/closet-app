@@ -92,12 +92,6 @@
     .imgs {
         @include img();
     }
-    // .imgs:hover {
-    //     transform: translateY(-5px);
-    //     box-shadow: 0 7px 34px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
-    //     transition: all .5s;
-    //     cursor: pointer;
-    // }
     .flex{
         display: flex;
     }

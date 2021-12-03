@@ -153,6 +153,8 @@ const createStore = () => {
             winter: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "winter")
             },
+            getCloth: state => state.clothList,
+
 
         }
     })
