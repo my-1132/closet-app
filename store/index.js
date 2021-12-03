@@ -119,25 +119,12 @@ const createStore = () => {
                     commit('updateCloset', using.chosens)
                 }
             },
+            deleteClosetItem({ getters, commit, state }){
+                
+            }
         },
         getters: {
             uid: state => state.login_user ? state.login_user.uid : null,
-            // clothListBySeason: (state) => { 
-            //     const all =  state.clothList.filter(cL => cL.season === "all")
-            //     const spring =  state.clothList.filter(cL => cL.season === "spring")
-            //     const summer =  state.clothList.filter(cL => cL.season === "summer")
-            //     const autumn =  state.clothList.filter(cL => cL.season === "autumn")
-            //     const winter =  state.clothList.filter(cL => cL.season === "winter")
-         
-            //     return { all, spring, summer, autumn, winter, }
-
-                // if(state.clothList[0] && state.clothList === null){
-                //     console.log('空です');
-                // }else{
-                //     console.log('値入ってます');
-                // }
-                // return{}
-            // }
             all:(state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "all")
             },
@@ -153,7 +140,18 @@ const createStore = () => {
             winter:(state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "winter")
             },
-            
+            tops:(state) => {
+                return state.clothList.chosens.filter(cL => cL.tag === "tops")
+            },
+            bottom:(state) => {
+                return state.clothList.chosens.filter(cL => cL.tag === "bottom")
+            },
+            outer:(state) => {
+                return state.clothList.chosens.filter(cL => cL.tag === "outer")
+            },
+            shoes:(state) => {
+                return state.clothList.chosens.filter(cL => cL.tag === "shoes")
+            },
         }
     })
 }

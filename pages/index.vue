@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="home1">ようこそ</div>
+    <!-- <div><img src="../assets/closet01.png"></div> -->
     <div class="home2">コーディネートをお届けします</div>
     <!-- <div class="btn"><nuxt-link to="/signUp"><button class="button">はじめての方</button></nuxt-link></div>
     <div><nuxt-link to="/login"><button class="button2">ログイン（登録済みの方）</button></nuxt-link></div> -->
@@ -27,34 +28,53 @@ export default {
 <style  lang="scss" scoped>
  $color-bg: rgb(100, 209, 230);
  @mixin btnStyle{
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-    position: relative;
-    display: inline-block;
-    padding: 1rem 4rem;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    border-radius: 0.5rem;
+    // font-size: 1.6rem;
+    // font-weight: 700;
+    // line-height: 1.5;
+    // position: relative;
+    // display: inline-block;
+    // padding: 1rem 4rem;
+    // cursor: pointer;
+    // -webkit-user-select: none;
+    // -moz-user-select: none;
+    // -ms-user-select: none;
+    // user-select: none;
+    // -webkit-transition: all 0.3s;
+    // transition: all 0.3s;
+    // text-align: center;
+    // vertical-align: middle;
+    // text-decoration: none;
+    // letter-spacing: 0.1em;
+    // border-radius: 0.5rem;
+
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #228bc8;
+  box-sizing: border-box;
+  width: 50%;
+  height: 50px;
+  padding: 0 6% 0 12%;
+  color: #228bc8;
+  font-size: 16px;
+  text-decoration: none;
+  position: relative;
+  transition-duration: 0.2s;
  }
  .home{
    font-family: "Hiragino Maru Gothic Pro";
    text-align: center;
+   background-image: url(../assets/closet01.png);
+   background-size: 100%;
+  height: 100％;
  }
  .home1{
    font-size: 60px;
    padding: 145px 0 20px 0 ;
+   color: #fff;
  }
  .home2{
+    color: #fff;
    font-size: 25px;
  }
 .btn{
@@ -64,11 +84,28 @@ export default {
   background-color: $color-bg;
   color: #fff;
   @include btnStyle();
-  margin-top: 100px;
+  margin: 215px 0 ;
+  text-align: center;
 
   &:hover{
-    color: $color-bg;
-    background-color:#fff;
+    // color: $color-bg;
+    // background-color:#fff;
+
+    background: #228bc8;
+    color: #fff;
+  }
+  &::before{
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 7px 8px;
+    border-color: transparent transparent transparent #228bc8;
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    margin-top: -7px;
   }
  }
 .button2{
@@ -101,7 +138,7 @@ export default {
     width:200px;
     height: 55px;
     font-size: 15px;
-    margin: 300px 0 0 0;
+    margin: 238px 0 ;
   }
   // .button2{
   //   width: 300px;

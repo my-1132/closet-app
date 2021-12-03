@@ -2,60 +2,78 @@
     <div class="container">
         <Header />
         <h2>クローゼット</h2>
-        <div class="container3">
-            <div class="all">
-                オール
-                <span class="items">{{all.length}}アイテム</span>
+        <div class="items">
+            <div>
+                <span>アイテム</span>
+                <nuxt-link to="/allItems">
+                    <span>すべて見る</span>
+                </nuxt-link>
             </div>
-            <div v-if="all.length === 0 ">
-                <span>アイテムがありません。</span>
+            <div>
+                <nuxt-link to="/tops">
+                    トップス
+                    <span>{{tops.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div v-for="allItem in all" :key="allItem.id">
-                <span>{{allItem. title }}</span>
-                <div><img class="imgs" :src="require(`~/assets/${allItem.url}`)" /></div>
+            <div>
+                <nuxt-link to="/bottom">
+                    ボトムス
+                    <span>{{bottom.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div class="spring">
-                春
-                <span class="items">{{spring.length}}アイテム</span>
+            <div>
+                <nuxt-link to="/outer">
+                    アウター
+                    <span>{{outer.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div v-if="spring.length === 0 ">
-                <span>アイテムがありません。</span>
+            <div>
+                <nuxt-link to="/shoes">
+                    シューズ
+                    <span>{{shoes.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div v-for="springItem in spring" :key="springItem.id">
-                <span>{{springItem. title }}</span>
-                <div><img class="imgs" :src="require(`~/assets/${springItem.url}`)" /></div>
+        </div>
+        <div class="season">
+            <div>シーズン</div>
+            <div>
+                <nuxt-link to="/all">
+                    オールシーズン
+                    <span>{{all.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div class="summer">
-                夏
-                <span class="items">{{summer.length}}アイテム</span>
+            <div>
+                <nuxt-link to="/spring">
+                    春                    
+                    <span>{{spring.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div v-if="summer.length === 0 ">
-                <span>アイテムがありません。</span>
+            <div>
+                <nuxt-link to="/summer">
+                    夏
+                    <span>{{summer.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div v-for="summerItem in summer " :key="summerItem.id">
-                <span>{{summerItem. title }}</span>
-                <div><img class="imgs" :src="require(`~/assets/${summerItem.url}`)" /></div>                </div>
-            <div class="autumn">
-                秋
-                <span class="items">{{autumn.length}}アイテム</span>
+            <div>
+                <nuxt-link to="/autumn">
+                    秋
+                    <span>{{autumn.length}}アイテム</span>
+                    <span>></span>
+                </nuxt-link>
             </div>
-            <div v-if="autumn.length === 0 ">
-                <span>アイテムがありません。</span>
-            </div>
-            <div v-for="autumnItem in autumn" :key="autumnItem.id">
-                <span>{{autumnItem. title }}</span>
-                <div><img class="imgs" :src="require(`~/assets/${autumnItem.url}`)" /></div>
-            </div>
-            <div class="winter">
-                冬
-                <span class="items">{{winter.length}}アイテム</span>
-            </div>
-            <div v-if="winter.length === 0 ">
-                <span>アイテムがありません。</span>
-            </div>
-            <div v-for="winterItem in winter" :key="winterItem.id">
-                <span>{{winterItem. title }}</span>
-                <div><img class="imgs" :src="require(`~/assets/${winterItem.url}`)" /></div>
+            <div>
+                <nuxt-link to="/winter">
+                    冬
+                    <span>{{winter.length}}アイテム</span>                   
+                    <span>></span>
+                </nuxt-link>
             </div>
         </div>
     </div>
@@ -117,7 +135,7 @@ export default {
             return icon
         },
         ...mapState(['clothList']),
-        ...mapGetters(['all','spring','summer','autumn','winter'])
+        ...mapGetters(['all','spring','summer','autumn','winter','tops','bottom','outer','shoes'])
     },
     created() {
         console.log(this.clothList);
@@ -177,98 +195,6 @@ export default {
 
 <style lang="scss" scoped>
 
-    @mixin box($background-color) {
-        background-color: $background-color;
-    }
-    .seasontitle {
-        // position: relative;
-        // display: inline-block;
-        // margin: 1.5em 15px 1.5em 0;
-        // padding: 0 5px;
-        // width: 90px;
-        // height: 90px;
-        // line-height: 90px;
-        // text-align: center;
-        // color: #eee;
-        // font-size: 20px;
-        // font-weight: bold;
-        // border-radius: 50%;
-        // box-sizing: border-box;
-        width: 100%;
-        padding: 25px;
-        margin-top: 15px;
-        font-size: 20px;
-
-    }
-    .items{
-        text-align: right;
-        font-size: 12px;
-    }
-
-    .container {
-        font-family: "Hiragino Maru Gothic Pro";
-    }
-    .container3 {
-        display: flex;
-        flex-wrap: wrap;
-        // text-align: center;
-    }
-    .red {
-        color: red;
-        font-weight: bold;
-    }
-    .blue {
-        color: blue;
-        font-weight: bold;
-    }
-    .string{
-        font-size: 4px;
-    }
-    .today {
-        font-weight: bold;
-    }
-    .advice{
-        background-color: #ADD8E6;
-        margin-top: 5px;
-        border-radius: 5px;
-        padding-left: 10px;
-        padding-top:4px;
-        width: 95%;
-        height: 2rem
-    }
-    .container2{
-        border:grey 2px dashed;
-        border-radius: 5px;
-        padding: 3px 5px;
-        width: 70%;
-    }
-    .imgs {
-        width: 300px;
-        height: 300px;
-        padding: 5%;
-        // border-radius: 5px;
-        // box-shadow: 0 2px 5px #ccc;
-    }
-    .summer {
-        @include box(#13e4c8);
-        @extend .seasontitle;
-    }
-    .spring {
-        @include box(#eea0dd);
-        @extend .seasontitle;
-    }
-    .autumn {
-        @include box(#e49b13);
-        @extend .seasontitle;
-    }
-    .winter {
-        @include box(#72afe0);
-        @extend .seasontitle;
-    }
-    .all {
-        @include box(rgb(223, 220, 56));
-        @extend .seasontitle;
-    }
 
 </style>
 
