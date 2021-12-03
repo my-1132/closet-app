@@ -46,8 +46,11 @@ const createStore = () => {
                 console.log(selectItem)
                 console.log(state.clothList)
                 state.clothList.chosens = selectItem
+            },
+            deleteItem(state, item) {
+                console.log(item)
+                state.clothList.chosens = item
             }
-
         },
         actions: {
             // googleアカウントでのログイン
@@ -119,8 +122,15 @@ const createStore = () => {
                     commit('updateCloset', using.chosens)
                 }
             },
-            deleteClosetItem({ getters, commit, state }){
-                
+            deleteClosetItem({ getters, commit, state }, index){
+                const item = state.clothList.chosens.slice()
+                console.log(item)
+                item.splice(index, 1)
+                console.log(item)
+                const using = Object.assign({}, state.clothList)
+                firebase.firestore().collection(`users/${getters.uid}/closet`)
+                .doc(using.id).update({ chosens: item })
+                commit('deleteItem', item)
             }
         },
         getters: {

@@ -81,11 +81,11 @@
 
 <script>
     import {  mapState,mapGetters} from 'vuex'
-    // import Header from "../.nuxt/components/Header.vue"
+    import Header from "../components/Header.vue"
 export default {
-    // components:{
-    //     Header
-    // },
+    components:{
+        Header
+    },
     data: () => {
         return {
             latitude: 0,

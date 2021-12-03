@@ -8,8 +8,9 @@
             <span>アイテムがありません。</span>
         </div>
         <span class="container">
-            <div v-for="clothListItem in clothList.chosens" :key="clothListItem.id" class="container2">
+            <div v-for="(clothListItem,index) in clothList.chosens" :key="clothListItem.id" class="container2">
                 <span>{{clothListItem.title }}</span>
+                <span><button @click="deleteConfirm(index)">削除</button></span>
                 <div><img class="imgs" :src="require(`~/assets/${clothListItem.url}`)" /></div>
             </div>
         </span>
@@ -17,8 +18,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import Header from "../.nuxt/components/Header.vue"
+import { mapState, mapActions } from 'vuex'
+import Header from "../components/Header.vue"
 
 export default{
     components:{
@@ -29,7 +30,15 @@ export default{
     },
     created(){
         console.log(this.clothList);
-    }
+    },
+    methods:{
+        deleteConfirm(index){
+            if(confirm('削除してもいいですか？')){
+                this.deleteClosetItem(index)
+            }
+        },
+        ...mapActions(['deleteClosetItem'])
+    },
 }
 </script>
 

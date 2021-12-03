@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <Header />
-        <h2>コーディネート一覧</h2>
         <div class="title"><img :src="require(`~/assets/genzaiichi.png`)" width="30px" height="30px"/>現在地付近の気象情報</div>
         <div class="container2">
             <span class="string">今日</span>
@@ -76,11 +75,11 @@
 <script>
     import { mapActions,mapGetters} from 'vuex'
     import {Carousel, Slide }from 'vue-carousel';
+    import Header from "../components/Header.vue"
 
-    // import Header from "../.nuxt/components/Header.vue"
 export default {
     components:{
-    //     Header
+        Header,
         Carousel,
         Slide
     },
@@ -248,6 +247,7 @@ export default {
         this.all.forEach(el => {
             this.clothList.push(el)
         })
+        console.log(this.clothList)
         if (process.client) {
             // ユーザーが利用しているブラウザがGeolocation APIをサポートしているか判定
             if (!navigator.geolocation) {
@@ -313,7 +313,8 @@ export default {
     .pic{
         @include styles();
         align-items: center;
-        border: 1px solid;
+        border: 3px solid grey;
+        border-radius: 15px;
     }
     .pic2 {
         @include styles();

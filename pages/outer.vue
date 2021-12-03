@@ -19,7 +19,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Header from "../.nuxt/components/Header.vue"
+import Header from "../components/Header.vue"
 
 export default{
     components:{

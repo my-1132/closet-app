@@ -10,7 +10,6 @@
         <div class="container">
             <div v-for="(allItem,index) in all" :key="index" class="container2">
                 <span>{{allItem. title }}</span>
-                <span><button @click="deleteConfirm(index)">削除</button></span>
                 <div><img class="imgs" :src="require(`~/assets/${allItem.url}`)" /></div>
             </div>
         </div>
@@ -19,7 +18,7 @@
 
 <script>
 import { mapGetters,} from 'vuex'
-import Header from "../.nuxt/components/Header.vue"
+import Header from "../components/Header.vue"
 
 export default{
     components:{
@@ -28,15 +27,6 @@ export default{
     computed:{
         ...mapGetters(['all'])
     },
-    methods:{
-        deleteConfirm(index){
-            if(confirm("削除してもよろしいですか？")){
-                this.all.splice(index,1)
-
-}
-        }
-        // ...mapActions(['deleteClosetItem'])
-    }
 }
 </script>
 
