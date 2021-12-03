@@ -54,9 +54,9 @@ const createStore = () => {
             gLogin() {
                 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
                 firebase.auth().signInWithRedirect(googleAuthProvider)
-                    .then(
-                        this.$router.push('/news1')
-                    )
+                // .then(
+                //     this.$router.push('/news1')
+                // )
             },
             gLogout() {
                 firebase.auth().signOut();
@@ -125,19 +125,19 @@ const createStore = () => {
         },
         getters: {
             uid: state => state.login_user ? state.login_user.uid : null,
-            all:(state) => {
+            all: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "all")
             },
-            spring:(state) => {
+            spring: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "spring")
             },
-            summer:(state) => {
+            summer: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "summer")
             },
-            autumn:(state) => {
+            autumn: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "autumn")
             },
-            winter:(state) => {
+            winter: (state) => {
                 return state.clothList.chosens.filter(cL => cL.season === "winter")
             },
             tops:(state) => {
@@ -152,6 +152,7 @@ const createStore = () => {
             shoes:(state) => {
                 return state.clothList.chosens.filter(cL => cL.tag === "shoes")
             },
+
         }
     })
 }

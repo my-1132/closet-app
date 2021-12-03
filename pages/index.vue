@@ -15,12 +15,25 @@
 
 <script>
 import { mapActions } from 'vuex';
-// import firebase from 'firebase/compat/firestore';
+import firebase from 'firebase/compat/app'
+  import 'firebase/compat/auth';
+  import 'firebase/compat/firestore';
 
 export default {
+  created(){
+    firebase.auth().onAuthStateChanged(user =>{
+      if(user) {
+        this.setLoginUser(user);
+        this.fetchItems()
+        this.fetchCloset()
+        this.$router.push('/news1')
+      } else {
+          this.deleteLoginUser()
+        }
+    })
+  },
   methods:{
-      ...mapActions(["gLogin","setLoginUser"])
-
+    ...mapActions(['fetchItems', 'setLoginUser', 'deleteLoginUser', 'fetchCloset',"gLogin","setLoginUser"])
   }
 }
 </script>
