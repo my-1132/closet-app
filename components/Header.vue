@@ -54,11 +54,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
-    body {
-        margin: 0;
-    }
-
 .btn{
     border: none;
     background: transparent;

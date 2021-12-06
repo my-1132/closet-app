@@ -48,6 +48,9 @@ export default{
     height: 300px;
     padding: 5%;
 }
-.itemName{
+@media screen and (max-width: 450px){
+    .container{
+        margin: 0 ;
+    }
 }
 </style>

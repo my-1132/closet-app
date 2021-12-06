@@ -47,4 +47,10 @@ export default{
     width: 300px;
     height: 300px;
 }
+@media screen and (max-width: 450px){
+    .container{
+        margin: 0 ;
+    }
+}
+
 </style>

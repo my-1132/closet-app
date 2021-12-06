@@ -41,25 +41,6 @@ export default {
 <style  lang="scss" scoped>
  $color-bg: rgb(100, 209, 230);
  @mixin btnStyle{
-    // font-size: 1.6rem;
-    // font-weight: 700;
-    // line-height: 1.5;
-    // position: relative;
-    // display: inline-block;
-    // padding: 1rem 4rem;
-    // cursor: pointer;
-    // -webkit-user-select: none;
-    // -moz-user-select: none;
-    // -ms-user-select: none;
-    // user-select: none;
-    // -webkit-transition: all 0.3s;
-    // transition: all 0.3s;
-    // text-align: center;
-    // vertical-align: middle;
-    // text-decoration: none;
-    // letter-spacing: 0.1em;
-    // border-radius: 0.5rem;
-
   justify-content: center;
   align-items: center;
   background: #fff;
@@ -75,11 +56,13 @@ export default {
   transition-duration: 0.2s;
  }
  .home{
-   font-family: "Hiragino Maru Gothic Pro";
-   text-align: center;
-   background-image: url(../assets/closet01.png);
-   background-size: 100%;
-  height: 100％;
+    font-family: "Hiragino Maru Gothic Pro";
+    text-align: center;
+    background-image: url(../assets/closet01.png);
+    background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
  }
  .home1{
    font-size: 60px;
@@ -101,9 +84,6 @@ export default {
   text-align: center;
 
   &:hover{
-    // color: $color-bg;
-    // background-color:#fff;
-
     background: #228bc8;
     color: #fff;
   }
@@ -131,14 +111,6 @@ export default {
     background-color:$color-bg;
   }
 }
-//  .button3{
-//   background: none;
-// 	border: none;
-// 	outline: none;
-// 	-webkit-appearance: none;
-// 	-moz-appearance: none;
-// 	appearance: none;
-// }
 
 @media screen and (max-width: 450px) {
   .home1{
@@ -153,11 +125,5 @@ export default {
     font-size: 15px;
     margin: 238px 0 ;
   }
-  // .button2{
-  //   width: 300px;
-  //   height: 75px;
-  //   font-size: 0.8rem;
-  //   word-wrap:break-word;
-  // }
 }
 </style>

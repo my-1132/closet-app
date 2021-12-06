@@ -73,4 +73,10 @@ export default{
         color: #fff;
     }
 }
+@media screen and (max-width: 450px){
+    .container{
+        margin: 5px 0 0 0 ;
+    }
+}
+
 </style>
