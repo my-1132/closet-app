@@ -29,13 +29,10 @@
         <div class="title2">今日のおすすめコーディネート</div>
         <carousel 
             :per-page="1"  
-            :navigation-enabled="true"
-            navigation-prev-label="〈"
-            navigation-next-label="〉"
             :speed="1000"
             class="coordinate">
             <slide>
-                <div class="pic">
+                <div class="ootd1">
                     <div class="outer">
                         {{tops.title}}
                         <img class="tops" :src="require(`~/assets/${tops.url}`)" />
@@ -49,7 +46,7 @@
                 </div>
             </slide>
             <slide>
-                <div class="pic2">
+                <div class="ootd2">
                     {{tops2.title}}
                     <img class="tops" :src="require(`~/assets/${tops2.url}`)" />
                     {{bottoms2.title}}
@@ -59,7 +56,7 @@
                 </div>
             </slide>
             <slide>
-                <div class="pic3">
+                <div class="ootd3">
                     {{tops3.title}}
                     <img class="tops" :src="require(`~/assets/${tops3.url}`)" />
                     {{bottoms3.title}}
@@ -299,7 +296,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding-top: 10px;
-        margin-top: 20px;
+        margin: 40px 100px;
+        border-radius: 30px;
+        border: 1px solid grey;
     }
     @mixin images {
         width: 300px;
@@ -310,22 +309,18 @@ export default {
         width: 50px;
         height: 50px;
     }
-    .pic{
+    .ootd1{
         @include styles();
         align-items: center;
-        border: 3px solid grey;
-        border-radius: 15px;
     }
-    .pic2 {
+    .ootd2 {
         @include styles();
         align-items: center;
-        border: 1px solid;
 
     }
-    .pic3 {
+    .ootd3 {
         @include styles();
         align-items: center;
-        border: 1px solid;
     }
     .coordinate{
         display: flex;
@@ -467,7 +462,7 @@ export default {
             width: 30px;
             height: 30px;
         }
-        .pic{
+        .ootd1{
             @include styles();
             padding-left: 20px;
         }
@@ -475,11 +470,11 @@ export default {
             display: flex;
             font-size: 1px;
         }
-        .pic2 {
+        .ootd2 {
             @include styles();
             padding-left: 10px
         }
-        .pic3 {
+        .ootd3 {
             @include styles();
         }
         
