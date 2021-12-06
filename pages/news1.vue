@@ -1,5 +1,6 @@
 <template>
   <div class="news1">
+    <Header />
     <div class="home">アイテムの写真を選んで</div>
     <div class="home1">あなたのクローゼットを作りましょう</div>
     <div class="pic1"><img src="~/assets/closet02.png" class="pic"></div>
@@ -11,9 +12,13 @@
 </template>
 
 <script>
+  import Header from '../components/Header.vue'
   
 
 export default {
+  components:{
+    Header
+  }
 }
 </script>
 

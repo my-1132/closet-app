@@ -97,7 +97,7 @@ export default {
   background-color: $color-bg;
   color: #fff;
   @include btnStyle();
-  margin: 215px 0 ;
+  margin: 235px 0 ;
   text-align: center;
 
   &:hover{

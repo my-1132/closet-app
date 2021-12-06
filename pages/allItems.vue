@@ -10,7 +10,7 @@
         <span class="container">
             <div v-for="(clothListItem,index) in clothList.chosens" :key="clothListItem.id" class="container2">
                 <span>{{clothListItem.title }}</span>
-                <span><button @click="deleteConfirm(index)">削除</button></span>
+                <span><button class="dbtn" @click="deleteConfirm(index)">削除</button></span>
                 <div><img class="imgs" :src="require(`~/assets/${clothListItem.url}`)" /></div>
             </div>
         </span>
@@ -33,7 +33,7 @@ export default{
     },
     methods:{
         deleteConfirm(index){
-            if(confirm('削除してもいいですか？')){
+            if(confirm('クローゼットから削除してもいいですか？')){
                 this.deleteClosetItem(index)
             }
         },
@@ -52,15 +52,25 @@ export default{
 .container{
     display: flex;
     flex-wrap: wrap;
-}
-.container2{
-    margin-left: 0 auto;
-    margin-right: auto;
-    width: 8em
+    margin-top: 40px;
+    margin-left: 70px;
 }
 .imgs{
     width: 300px;
     height: 300px;
     padding: 5%;
+}
+.dbtn{
+    border: 1px #4d4d4d solid;
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 50px;
+    height: 35px;
+
+    &:hover{
+        background-color: #4d4d4d;
+        color: #fff;
+    }
 }
 </style>
