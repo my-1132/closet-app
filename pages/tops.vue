@@ -8,10 +8,10 @@
             <span>アイテムがありません。</span>
         </div>
         <span class="container">
-        <div v-for="topsItem in tops" :key="topsItem.id" class="container2">
-            <span>{{topsItem. title }}</span>
-            <div><img class="imgs" :src="require(`~/assets/${topsItem.url}`)" /></div>
-        </div>
+            <div v-for="topsItem in tops" :key="topsItem.id">
+                <span class="itemName">{{topsItem. title }}</span>
+                <div><img class="imgs" :src="require(`~/assets/${topsItem.url}`)" /></div>
+            </div>
         </span>
     </div>
 </template>
@@ -34,21 +34,20 @@ export default{
 .tagName{
     color: #fff;
     background-color: #4d4d4d;
-    padding: 10px;
     text-align: center;
+    padding: 10px;
 }
 .container{
     display: flex;
     flex-wrap: wrap;
-}
-.container2{
-    margin-left: 0 auto;
-    margin-right: auto;
-    width: 8em
+    margin-top: 40px;
+    margin-left: 70px;
 }
 .imgs{
     width: 300px;
     height: 300px;
     padding: 5%;
+}
+.itemName{
 }
 </style>

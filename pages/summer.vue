@@ -8,7 +8,7 @@
             <span>アイテムがありません。</span>
         </div>
         <span class="container">
-        <div v-for="summerItem in summer" :key="summerItem.id" class="container2">
+        <div v-for="summerItem in summer" :key="summerItem.id" >
             <span>{{summerItem. title }}</span>
             <div><img class="imgs" :src="require(`~/assets/${summerItem.url}`)" /></div>
         </div>
@@ -41,12 +41,8 @@ export default{
 .container{
     display: flex;
     flex-wrap: wrap;
-}
-.container2{
-    margin-left: 0 auto;
-    margin-right: auto;
-    width: 8em
-}
+    margin-top: 40px;
+    margin-left: 70px;}
 .imgs{
     width: 300px;
     height: 300px;

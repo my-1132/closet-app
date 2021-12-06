@@ -41,12 +41,8 @@ export default{
 .container{
     display: flex;
     flex-wrap: wrap;
-}
-.container2{
-    margin-left: 0 auto;
-    margin-right: auto;
-    width: 8em
-}
+    margin-top: 40px;
+    margin-left: 70px;}
 
 .imgs{
     width: 300px;

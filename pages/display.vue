@@ -1,78 +1,100 @@
 <template>
     <div class="container">
         <Header />
-        <h2>クローゼット</h2>
+        <h2 class="name">クローゼット</h2>
         <div class="items">
-            <div>
-                <span>アイテム</span>
+            <div class="tag">
+                <span class="stl">アイテム</span>
                 <nuxt-link to="/allItems">
-                    <span>すべて見る</span>
+                    <div class="right">
+                        <button class="rightBtn">すべて見る</button>
+                    </div>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/tops">
-                    トップス
-                    <span>{{tops.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">
+                        トップス
+                        <span>{{tops.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/bottom">
-                    ボトムス
-                    <span>{{bottom.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">
+                        ボトムス
+                        <span>{{bottom.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/outer">
-                    アウター
-                    <span>{{outer.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">
+                        アウター
+                        <span>{{outer.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/shoes">
+                <button class="btnStyle">
                     シューズ
                     <span>{{shoes.length}}アイテム</span>
                     <span>></span>
+                </button>
                 </nuxt-link>
             </div>
         </div>
         <div class="season">
-            <div>シーズン</div>
-            <div>
+            <div class="tag">
+                シーズン
+                <div></div>
+            </div>
+            <div class="tagStyle">
                 <nuxt-link to="/all">
-                    オールシーズン
-                    <span>{{all.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">オールシーズン
+                        <span>{{all.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/spring">
-                    春                    
-                    <span>{{spring.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">
+                        春                    
+                        <span>{{spring.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/summer">
-                    夏
-                    <span>{{summer.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">
+                        夏
+                        <span>{{summer.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/autumn">
-                    秋
-                    <span>{{autumn.length}}アイテム</span>
-                    <span>></span>
+                    <button class="btnStyle">
+                        秋
+                        <span>{{autumn.length}}アイテム</span>
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
-            <div>
+            <div class="tagStyle">
                 <nuxt-link to="/winter">
-                    冬
-                    <span>{{winter.length}}アイテム</span>                   
-                    <span>></span>
+                    <button class="btnStyle">
+                        冬
+                        <span>{{winter.length}}アイテム</span>                   
+                        <span>></span>
+                    </button>
                 </nuxt-link>
             </div>
         </div>
@@ -116,40 +138,55 @@ export default {
         background-color: $background-color;
     }
     .seasontitle {
-        // position: relative;
-        // display: inline-block;
-        // margin: 1.5em 15px 1.5em 0;
-        // padding: 0 5px;
-        // width: 90px;
-        // height: 90px;
-        // line-height: 90px;
-        // text-align: center;
-        // color: #eee;
-        // font-size: 20px;
-        // font-weight: bold;
-        // border-radius: 50%;
-        // box-sizing: border-box;
         width: 100%;
         padding: 25px;
         margin-top: 15px;
         font-size: 20px;
-
     }
 
     .container {
         font-family: "Hiragino Maru Gothic Pro";
     }
-    .container3 {
-        display: flex;
-        flex-wrap: wrap;
-        // text-align: center;
+    .tag{
+        background-color: #80a491;
+        padding: 15px 10px;
+        color: #fff;
+        font-size: 18px;
     }
-    .container2{
-        border:grey 2px dashed;
-        border-radius: 5px;
-        padding: 3px 5px;
-        width: 70%;
+    .tagStyle{
+        padding: 12px 10px;
+        border-style: solid ;
+        border-width: 1px;
+
     }
+    .btnStyle{
+        text-decoration: none;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+
+    }
+    .right{
+        text-decoration: none;
+        text-align: right;
+        padding: 0 15px 0 0 ;
+    }
+    .rightBtn{
+        text-decoration: none;
+        border: none;
+        background: transparent;
+        font-size: 17px;
+        color: #fff;
+    }
+    .name{
+        text-align: center;
+    }
+
+    @media screen and (max-width: 450px){
+
+
+        
+    }
+
 
 </style>
-

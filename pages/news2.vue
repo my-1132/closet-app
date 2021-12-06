@@ -2,16 +2,37 @@
     <div class="news2">
         <div class="home">クローゼットが完成しました</div>
         <div class="home1">それでは確認に行ってましょう</div>
-        <div><img src="~/assets/closet2.png" class="pic"></div>
-        <div class="btn"><nuxt-link to="/display"><button class="button">クローゼットを確認する</button></nuxt-link></div>
+        <div><img src="~/assets/closet03.png" class="pic"></div>
+        <div>
+          <div>          
+            <nuxt-link to="/display">
+              <button class="button">クローゼットを確認する&nbsp;&nbsp;&nbsp;></button>
+            </nuxt-link>
+          </div>
+        </div>  
     </div>
 </template>
 
 <style lang="scss" scoped>
  $color-bg: rgb(100, 209, 230);
 @mixin homeStyle{
-  font-size: 35px;
+  font-size: 30px;
 }
+ @mixin btnStyle{
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #228bc8;
+  box-sizing: border-box;
+  width: 50%;
+  height: 50px;
+  padding: 0 6%;
+  color: #228bc8;
+  font-size: 16px;
+  text-decoration: none;
+  position: relative;
+  transition-duration: 0.2s;
+ }
 
 .news2{
   font-family: "Hiragino Maru Gothic Pro";
@@ -30,37 +51,37 @@
   margin-top: 70px
 }
 .button{
-  background-color: $color-bg;
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.5;
-  position: relative;
-  display: inline-block;
-  padding: 1rem 4rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  color: #fff;
-  border-radius: 0.5rem;
+    margin: 15px;
+  @include btnStyle();
+
+  &:hover{
+    background-color: #228bc8;
+    color: #fff;
+
+  }
  }
-.button:hover{
-  color: $color-bg;
-  background-color:#fff;
-}
 
 @media screen and (max-width: 450px) {
   @mixin homeStyle{
   font-size: 20px;
   font-weight: 700;
 }
+ @mixin btnStyle{
+//   justify-content: center;
+//   align-items: center;
+//   background: #fff;
+//   border: 1px solid #228bc8;
+//   box-sizing: border-box;
+  width: 75%;
+//   height: 50px;
+//   padding: 0 6%;
+//   color: #228bc8;
+//   font-size: 16px;
+//   text-decoration: none;
+//   position: relative;
+//   transition-duration: 0.2s;
+ }
+
 
   .news2{
   font-family: "Hiragino Maru Gothic Pro";
@@ -80,27 +101,9 @@
   margin-top: 70px
 }
 .button{
-  background-color: $color-bg;
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.5;
-  position: relative;
-  display: inline-block;
-  padding: 1rem 4rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  color: #fff;
-  border-radius: 0.5rem;
-  margin: 100px 0 0 0;
+  margin: 100px 0 0 0 ;
+    @include btnStyle();
+
  }
 .button:hover{
   color: $color-bg;

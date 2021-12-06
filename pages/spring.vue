@@ -8,7 +8,7 @@
             <span>アイテムがありません。</span>
         </div>
         <span class="container">
-        <div v-for="springItem in spring" :key="springItem.id" class="container2">
+        <div v-for="springItem in spring" :key="springItem.id" >
             <span>{{springItem. title }}</span>
             <div><img class="imgs" :src="require(`~/assets/${springItem.url}`)" /></div>
         </div>
@@ -35,18 +35,15 @@ export default{
 .tagName{
     color: #fff;
     background-color: #4d4d4d;
-    padding: 10px;
     text-align: center;
+    padding: 10px;
+
 }
 .container{
     display: flex;
     flex-wrap: wrap;
-}
-.container2{
-    margin-left: 0 auto;
-    margin-right: auto;
-    width: 8em
-}
+    margin-top: 40px;
+    margin-left: 70px;}
 .imgs{
     width: 300px;
     height: 300px;

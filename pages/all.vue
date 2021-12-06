@@ -7,12 +7,12 @@
         <div v-if="all.length === 0 ">
             <span>アイテムがありません。</span>
         </div>
-        <div class="container">
-            <div v-for="(allItem,index) in all" :key="index" class="container2">
+        <span class="container">
+            <div v-for="(allItem,index) in all" :key="index">
                 <span>{{allItem. title }}</span>
                 <div><img class="imgs" :src="require(`~/assets/${allItem.url}`)" /></div>
             </div>
-        </div>
+        </span>
     </div>
 </template>
 
@@ -34,19 +34,15 @@ export default{
 .tagName{
     color: #fff;
     background-color: #4d4d4d;
-    padding: 10px;
     text-align: center;
+    padding: 10px;
+
 }
 .container{
-        // display: flex;
-        flex-wrap: wrap;
-        text-align: center;
-}
-.container2{
-    margin-left: 0 auto;
-    margin-right: auto;
-    width: 8em
-}
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-left: 70px;}
 .imgs{
     width: 300px;
     height: 300px;
