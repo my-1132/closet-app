@@ -1,16 +1,104 @@
 <template>
     <div class="signUp">
-        <h1>会員登録</h1>
-        <div>メールアドレス</div>
-        <div><input type="text"></div>
-        <div>パスワード</div>
-        <div><input type="text"></div>
-        <div><router-link to="/news1"><button>会員登録</button></router-link></div>
+        <h1 class="word1">会員登録</h1>
+        <div class="word2">メールアドレス</div>
+        <div><input type="text" v-model="email" class="text" placeholder="sample@email.com"></div>
+        <div class="word2">パスワード</div>
+        <div><input type="text" v-model="password" class="text" placeholder="✳︎✳︎✳︎✳︎"></div>
+        <div><button class="button" @click="signUp" >会員登録</button></div>
     </div>
 </template>
 
 <script>
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 export default {
-    
+    data(){
+        return{
+            email: '',
+            password:''
+        }
+    },
+    methods:{
+        signUp(){
+            console.log(firebase);
+            firebase.auth().createUserWithEmailAndPassword(this.email,this.password)
+            .then(
+                console.log('会員登録完了'),
+                this.$router.push('/login')
+            ).catch(function(error){
+                alert(error)
+                },
+            )
+        }
+    }
 }
 </script>
+<style lang="scss" scoped>
+$color-bg: rgb(100, 209, 230);
+
+.word1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 30px 0 15px 0;
+}
+.word2{
+    padding-left: 58px;
+}
+.signUp{
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    font-family:  "Hiragino Maru Gothic Pro";
+}
+.text{
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+
+    &:focus{
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    }
+}
+.button{
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: $color-bg;
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-left: 35%;
+    font-size: 13px;
+    box-shadow: 0;
+    border: solid;
+
+    &:hover{
+        background-color: #fff;
+        color: $color-bg;
+        
+    }
+}
+
+</style>
