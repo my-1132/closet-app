@@ -3,13 +3,13 @@
         <!-- PC用ヘッダー -->
         <header>
             <div class="closet">C&nbsp;L&nbsp;O&nbsp;S&nbsp;E&nbsp;T</div>
-            <nav class="pc-nav">
+            <!-- <nav class="pc-nav">
                 <ul>
                     <li><nuxt-link to="/coordinate"><button class="btn">コーディネートの確認</button></nuxt-link></li>
                     <li><nuxt-link to="/display"><button class="btn">クローゼットを見る</button></nuxt-link></li>
                     <li><nuxt-link to="/"><button class="btn" @click="gLogout">ログアウト</button></nuxt-link></li>
                 </ul>
-            </nav>
+            </nav> -->
             <!-- スマホ用ヘッダー -->
         <!-- <nav class="sp-nav">
             <ul>
@@ -54,20 +54,23 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+body{
+    margin: -8px;
+}
 .btn{
     border: none;
     background: transparent;
     font-family: "Hiragino Maru Gothic Pro";
     cursor: pointer;
     font-size: 20px;
-    color: #fff;
+    color: #ffff;
 
     &:hover{
         color: #111;
     }
 }
 header {
-    background-color: #cccccc;
+    background-color: #ffff;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -78,7 +81,7 @@ header {
     padding-top: 20px;
     font-size: 30px;
     font-family: "Hiragino Maru Gothic Pro";
-    color: #ffffff;
+    color: #cccc;
 }
 .pc-nav ul {
     display: flex;
